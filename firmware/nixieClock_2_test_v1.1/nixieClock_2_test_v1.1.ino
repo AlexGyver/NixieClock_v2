@@ -12,6 +12,13 @@
 // в setup смотрите как задаётся яркость
 // в loop просто перебираются цифры от 0 до 9
 
+#define BOARD_TYPE 2
+// тип платы часов:
+// 0 - IN-12 turned
+// 1 - IN-12
+// 2 - IN-14 (обычная и neon dot)
+// 3 другие индикаторы
+
 // пины
 #define PIEZO 2   // пищалка
 #define KEY0 3    // часы
@@ -30,14 +37,37 @@
 #define DECODER2 A2
 #define DECODER3 A3
 
+// распиновка ламп
+#if (BOARD_TYPE == 0)
+byte digitMask[] = {7, 3, 6, 4, 1, 9, 8, 0, 5, 2}; // маска дешифратора платы in12_turned (цифры нормальные)
+#elif (BOARD_TYPE == 1)
+byte digitMask[] = {2, 8, 1, 9, 6, 4, 3, 5, 0, 7}; // маска дешифратора платы in12 (цифры вверх ногами)
+#elif (BOARD_TYPE == 2)
+byte digitMask[] = {9, 8, 0, 5, 4, 7, 3, 6, 2, 1}; // маска дешифратора платы in14
+#elif (BOARD_TYPE == 3)
+//byte digitMask[] = {}; // тут вводим свой порядок пинов
+#endif
+
+#if (BOARD_TYPE == 1 || BOARD_TYPE == 2)
+byte opts[] = {KEY3, KEY2, KEY1, KEY0};   // порядок индикаторов справа налево (для IN-12 turned)
+#else
+byte opts[] = {KEY0, KEY1, KEY2, KEY3};   // порядок индикаторов слева направо
+#endif
+
 #include "GyverHacks.h"
 
-byte digitMask[] = {7, 3, 6, 4, 1, 9, 8, 0, 5, 2}; // маска дешифратора платы in12_turned
-byte opts[] = {KEY0, KEY1, KEY2, KEY3};   // порядок индикаторов слева направо
 volatile byte indiDimm[4];        // величина диммирования (0-24)
 volatile byte indiCounter[4];     // счётчик каждого индикатора (0-24)
 volatile byte indiDigits[4];      // цифры, которые должны показать индикаторы (0-10)
 volatile byte curIndi;            // текущий индикатор (0-3)
+
+void setDig(byte digit) {
+  digit = digitMask[digit];
+  setPin(DECODER3, bitRead(digit, 0));
+  setPin(DECODER1, bitRead(digit, 1));
+  setPin(DECODER0, bitRead(digit, 2));
+  setPin(DECODER2, bitRead(digit, 3));
+}
 
 void setup() {
   Serial.begin(9600);
