@@ -40,19 +40,21 @@
 // распиновка ламп
 #if (BOARD_TYPE == 0)
 byte digitMask[] = {7, 3, 6, 4, 1, 9, 8, 0, 5, 2}; // маска дешифратора платы in12_turned (цифры нормальные)
+byte opts[] = {KEY0, KEY1, KEY2, KEY3};            // порядок индикаторов слева направо
+
 #elif (BOARD_TYPE == 1)
 byte digitMask[] = {2, 8, 1, 9, 6, 4, 3, 5, 0, 7}; // маска дешифратора платы in12 (цифры вверх ногами)
+byte opts[] = {KEY3, KEY2, KEY1, KEY0};            // порядок индикаторов справа налево (для IN-12 turned) и ин-14
+
 #elif (BOARD_TYPE == 2)
 byte digitMask[] = {9, 8, 0, 5, 4, 7, 3, 6, 2, 1}; // маска дешифратора платы in14
+byte opts[] = {KEY3, KEY2, KEY1, KEY0};            // порядок индикаторов справа налево (для IN-12 turned) и ин-14
+
 #elif (BOARD_TYPE == 3)
-//byte digitMask[] = {}; // тут вводим свой порядок пинов
+byte digitMask[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}; // тут вводим свой порядок пинов
+byte opts[] = {KEY0, KEY1, KEY2, KEY3};            // свой порядок индикаторов
 #endif
 
-#if (BOARD_TYPE == 1 || BOARD_TYPE == 2)
-byte opts[] = {KEY3, KEY2, KEY1, KEY0};   // порядок индикаторов справа налево (для IN-12 turned)
-#else
-byte opts[] = {KEY0, KEY1, KEY2, KEY3};   // порядок индикаторов слева направо
-#endif
 
 #include "GyverHacks.h"
 

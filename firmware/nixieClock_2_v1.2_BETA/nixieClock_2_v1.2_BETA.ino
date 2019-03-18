@@ -7,9 +7,8 @@
   https://AlexGyver.ru/
 */
 /*
-   Отличия от 1.0:
-   - Новые режимы переключения цифр
-   - Случаные глюки в работе (эффект)
+   Отличия от 1.1:
+   - Чуть переделан блок кода, отвечающий за распиновку ламп
 */
 
 // ************************** НАСТРОЙКИ **************************
@@ -83,29 +82,6 @@
 #define DECODER2 A2
 #define DECODER3 A3
 
-// библиотеки
-#include "GyverHacks.h"
-#include "GyverTimer.h"
-#include "GyverButton.h"
-#include <Wire.h>
-#include "RTClib.h"
-#include "EEPROMex.h"
-RTC_DS3231 rtc;
-
-// таймеры
-GTimer_ms dotTimer(500);                // полсекундный таймер для часов
-GTimer_ms dotBrightTimer(DOT_TIMER);    // таймер шага яркости точки
-GTimer_ms backlBrightTimer(30);         // таймер шага яркости подсветки
-GTimer_ms almTimer((long)ALM_TIMEOUT * 1000);
-GTimer_ms flipTimer(FLIP_SPEED);
-GTimer_ms glitchTimer(1000);
-
-// переменные
-volatile int8_t indiDimm[4];      // величина диммирования (0-24)
-volatile int8_t indiCounter[4];   // счётчик каждого индикатора (0-24)
-volatile int8_t indiDigits[4];    // цифры, которые должны показать индикаторы (0-10)
-volatile int8_t curIndi;          // текущий индикатор (0-3)
-
 // распиновка ламп
 #if (BOARD_TYPE == 0)
 byte digitMask[] = {7, 3, 6, 4, 1, 9, 8, 0, 5, 2};   // маска дешифратора платы in12_turned (цифры нормальные)
@@ -128,6 +104,29 @@ byte opts[] = {KEY0, KEY1, KEY2, KEY3};              // свой порядок 
 byte cathodeMask[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}; // и свой порядок катодов
 
 #endif
+
+// библиотеки
+#include "GyverHacks.h"
+#include "GyverTimer.h"
+#include "GyverButton.h"
+#include <Wire.h>
+#include "RTClib.h"
+#include "EEPROMex.h"
+RTC_DS3231 rtc;
+
+// таймеры
+GTimer_ms dotTimer(500);                // полсекундный таймер для часов
+GTimer_ms dotBrightTimer(DOT_TIMER);    // таймер шага яркости точки
+GTimer_ms backlBrightTimer(30);         // таймер шага яркости подсветки
+GTimer_ms almTimer((long)ALM_TIMEOUT * 1000);
+GTimer_ms flipTimer(FLIP_SPEED);
+GTimer_ms glitchTimer(1000);
+
+// переменные
+volatile int8_t indiDimm[4];      // величина диммирования (0-24)
+volatile int8_t indiCounter[4];   // счётчик каждого индикатора (0-24)
+volatile int8_t indiDigits[4];    // цифры, которые должны показать индикаторы (0-10)
+volatile int8_t curIndi;          // текущий индикатор (0-3)
 
 boolean dotFlag;
 int8_t hrs, mins, secs;
