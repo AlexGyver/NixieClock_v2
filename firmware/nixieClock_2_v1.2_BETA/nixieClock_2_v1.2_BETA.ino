@@ -26,7 +26,7 @@
 // 2 - перемотка по порядку числа (рекомендуемая скорость: 50-80)
 // 3 - перемотка по порядку катодов в лампе (рекомендуемая скорость: 30-50)
 
-#define FLIP_SPEED 100      // скорость эффекта, мс
+#define FLIP_SPEED 40       // скорость эффекта, мс
 
 // -------- яркость --------
 #define NIGHT_LIGHT 1       // менять яркость от времени суток (1 вкл, 0 выкл)
@@ -39,14 +39,14 @@
 #define DOT_BRIGHT 10       // яркость точки дневная (0 - 255)
 #define DOT_BRIGHT_N 3      // яркость точки ночная (0 - 255)
 
-#define BACKL_BRIGHT 250    // яркость подсветки ламп дневная (0 - 255)
+#define BACKL_BRIGHT 180    // яркость подсветки ламп дневная (0 - 255)
 #define BACKL_BRIGHT_N 20   // яркость подсветки ламп ночная (0 - 255)
 #define BACKL_PAUSE 1000    // пазуа "темноты" между вспышками подсветки, мс
 
 // -------- глюки --------
 #define GLITCH_ALLOWED 1    // 1 - включить, 0 - выключить глюки
-#define GLITCH_MIN 3        // минимальное время между глюками, с
-#define GLITCH_MAX 10       // максимальное время между глюками, с
+#define GLITCH_MIN 30       // минимальное время между глюками, с
+#define GLITCH_MAX 120      // максимальное время между глюками, с
 
 // -------- мигание --------
 #define DOT_TIME 500        // время мигания точки, мс
@@ -157,6 +157,7 @@ void setDig(byte digit) {
 
 void setup() {
   Serial.begin(9600);
+  randomSeed(analogRead(6) + analogRead(7));
 
   // настройка пинов на выход
   pinMode(DECODER0, OUTPUT);
@@ -251,7 +252,7 @@ void loop() {
 
 void glitchTick() {
 #if (GLITCH_ALLOWED == 1)
-  if (!glitchFlag && secs > 10 && secs < 50) {
+  if (!glitchFlag && secs > 7 && secs < 55) {
     if (glitchTimer.isReady()) {
       glitchFlag = true;
       indiState = 0;
