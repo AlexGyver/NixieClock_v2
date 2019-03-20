@@ -66,7 +66,7 @@
 
 Открыв плату по ссылке, её можно экспортировать в PDF, PNG или Altium (иконка папки слева сверху/экспорт) для изготовления ЛУТом или другими способами!  
 При заказе плат у китайцев не забудьте указать в комментарии "Please make V-cut along middle thick horizontal outline" для надреза платы по средней линии  
-Гербер файлы уже есть в архиве!    
+**Гербер файлы уже есть в архиве!**
 ![SCHEME](https://github.com/AlexGyver/NixieClock_v2/blob/master/schemes/drawing.jpg)
 
 <a id="chapter-3"></a>
