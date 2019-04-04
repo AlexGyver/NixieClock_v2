@@ -67,7 +67,7 @@ void constantWizard() {
 		char answer = Serial.read();
 		if (answer == 'N') {
 			Serial.println(F("Bye"));
-			return 0;
+			return;
 		}
 		if (answer == 'Y') {
 			break;
@@ -259,15 +259,15 @@ void setPin(uint8_t pin, uint8_t x) {
 	if (pin < 8) bitWrite(PORTD, pin, x);
 	else if (pin < 14) bitWrite(PORTB, (pin - 8), x); 
 	else if (pin < 20) bitWrite(PORTC, (pin - 14), x);
-	if (pin > 19) return 0;
+	else return;
 }
 
 // ***************************** fast digitalread *****************************
 boolean readPin(uint8_t pin) { 	
-	if (pin < 8) return bitRead(PORTD, pin);
-	else if (pin < 14) return bitRead(PORTB, pin - 8);
-	else if (pin < 20) return bitRead(PORTC, pin - 14);	
-	if (pin > 19) return 0;
+	if (pin < 8) return bitRead(PIND, pin);
+	else if (pin < 14) return bitRead(PINB, pin - 8);
+	else if (pin < 20) return bitRead(PINC, pin - 14);	
+	else return false;
 }
 
 // ***************************** fast analogwrite *****************************
