@@ -18,12 +18,12 @@ void calculateTime() {
         hrs = now.hour();
       }
 
-      if (!alm_flag && alm_mins == mins && alm_hrs == hrs && true) {
+      /*if (!alm_flag && alm_mins == mins && alm_hrs == hrs && true) {
         mode = 0;
         alm_flag = true;
         almTimer.start();
         almTimer.reset();
-      }
+      }*/
     }
     if (mins > 59) {
       mins = 0;

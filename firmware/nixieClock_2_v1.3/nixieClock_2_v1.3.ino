@@ -240,7 +240,7 @@ void setup() {
 
 void loop() {
   if (dotTimer.isReady()) calculateTime();  // каждые 500 мс пересчёт и отправка времени
-  if (newTimeFlag && mode == 0) flipTick(); // перелистывание цифр
+  if (newTimeFlag && curMode == 0) flipTick(); // перелистывание цифр
   dotBrightTick();                          // плавное мигание точки
   backlBrightTick();                        // плавное мигание подсветки ламп
   if (mode == 0) glitchTick();              // глюки
