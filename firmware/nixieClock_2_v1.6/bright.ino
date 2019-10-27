@@ -19,11 +19,11 @@ void backlBrightTick() {
         backlBrightFlag = false;
       }
     }
-    setPWM(BACKL, backlBrightCounter);
+    setPWM(BACKL, getPWM_CRT(backlBrightCounter));
   } else if (BACKL_MODE == 1) {
-    setPWM(BACKL, backlMaxBright);
+    setPWM(BACKL, getPWM_CRT(backlMaxBright));
   } else if (BACKL_MODE == 2) {
-    digitalWrite(BACKL, 0);
+    setPin(BACKL, 0);
   }
 }
 
@@ -43,7 +43,9 @@ void dotBrightTick() {
         dotBrightCounter = 0;
       }
     }
-    setPWM(DOT, dotBrightCounter);
+    if (dotBrightCounter > 0) {
+      setPWM(DOT, getPWM_CRT(dotBrightCounter));
+    }
   }
 }
 

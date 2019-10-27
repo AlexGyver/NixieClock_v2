@@ -1,3 +1,4 @@
+byte minsCount = 0;
 void calculateTime() {
   dotFlag = !dotFlag;
   if (dotFlag) {
@@ -9,21 +10,23 @@ void calculateTime() {
       newTimeFlag = true;   // флаг что нужно поменять время
       secs = 0;
       mins++;
+      minsCount++;
 
-      if (mins == 1 || mins == 30) {    // каждые полчаса
-        burnIndicators();               // чистим чистим!
+      if (minsCount >= 15) {            // каждые 15 мин
         DateTime now = rtc.now();       // синхронизация с RTC
         secs = now.second();
         mins = now.minute();
         hrs = now.hour();
       }
 
+      if (mins % BURN_PERIOD == 0) burnIndicators();     // чистим чистим!
+
       /*if (!alm_flag && alm_mins == mins && alm_hrs == hrs && true) {
         mode = 0;
         alm_flag = true;
         almTimer.start();
         almTimer.reset();
-      }*/
+        }*/
     }
     if (mins > 59) {
       mins = 0;

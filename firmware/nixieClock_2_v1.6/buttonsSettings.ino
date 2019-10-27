@@ -59,6 +59,7 @@ void buttonsTick() {
     // переключение эффектов цифр
     if (btnR.isClick()) {
       if (++FLIP_EFFECT >= 4) FLIP_EFFECT = 0;
+      EEPROM.put(0, FLIP_EFFECT);
       for (byte i = 0; i < 4; i++) {
         indiDimm[i] = indiMaxBright;
       }
@@ -67,10 +68,14 @@ void buttonsTick() {
     // переключение эффектов подсветки
     if (btnL.isClick()) {
       if (++BACKL_MODE >= 3) BACKL_MODE = 0;
+      EEPROM.put(1, BACKL_MODE);
     }
 
     // переключение глюков
-    if (btnL.isHolded()) GLITCH_ALLOWED = !GLITCH_ALLOWED;
+    if (btnL.isHolded()) {
+      GLITCH_ALLOWED = !GLITCH_ALLOWED;
+      EEPROM.put(2, GLITCH_ALLOWED);
+    }
   }
 
   if (btnSet.isHolded()) {
