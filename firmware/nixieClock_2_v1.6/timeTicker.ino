@@ -13,6 +13,7 @@ void calculateTime() {
       minsCount++;
 
       if (minsCount >= 15) {            // каждые 15 мин
+        minsCount = 0;
         DateTime now = rtc.now();       // синхронизация с RTC
         secs = now.second();
         mins = now.minute();
