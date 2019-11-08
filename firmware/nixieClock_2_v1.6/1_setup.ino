@@ -76,15 +76,6 @@ void setup() {
   indiBrightCounter = indiMaxBright;
 
   // скорость режима при запуске
-  switch (FLIP_EFFECT) {
-    case 0:
-      break;
-    case 1: flipTimer.setInterval(FLIP_SPEED_1);
-      break;
-    case 2: flipTimer.setInterval(FLIP_SPEED_2);
-      break;
-    case 3: flipTimer.setInterval(FLIP_SPEED_3);
-      break;
-  }
+  flipTimer.setInterval(FLIP_SPEED[FLIP_EFFECT]);
   //almTimer.stop();
 }
