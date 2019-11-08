@@ -104,4 +104,103 @@ void flipTick() {
       }
     }
   }
+  // --- train --- //
+  else if (FLIP_EFFECT == 4) {
+    if (!flipInit) {
+      flipInit = true;
+      currentLamp = 0;
+      trainLeaving = true;
+      flipTimer.reset();
+    }
+    if (flipTimer.isReady()) {
+      if (trainLeaving) {
+        anodeStates[currentLamp] = 0;
+		currentLamp++;
+        //currentLamp++;
+        if (currentLamp >= 4) {
+          trainLeaving = false; //coming
+          currentLamp = 0;
+		  sendTime(hrs, mins);
+        }
+      }
+	  else { //trainLeaving == false
+        anodeStates[currentLamp] = 1;
+		currentLamp++;
+        //currentLamp++;
+        if (currentLamp >= 4) {
+          flipInit = false;
+          newTimeFlag = false;
+        }
+      }
+    }
+  }
+
+// --- elastic band --- //
+  else if (FLIP_EFFECT == 5) {
+    if (!flipInit) {
+      flipInit = true;
+      flipEffectStages = 0;
+      flipTimer.reset();
+    }
+    if (flipTimer.isReady()) {
+      switch (flipEffectStages++) {
+        case 1:
+          anodeStates[3] = 0; break;
+        case 2:
+          anodeStates[2] = 0;
+          anodeStates[3] = 1; break;
+        case 3:
+          anodeStates[3] = 0; break;
+        case 4:
+          anodeStates[1] = 0;
+          anodeStates[2] = 1; break;
+        case 5:
+          anodeStates[2] = 0;
+          anodeStates[3] = 1; break;
+        case 6:
+          anodeStates[3] = 0; break;
+        case 7:
+          anodeStates[0] = 0;
+          anodeStates[1] = 1; break;
+        case 8:
+          anodeStates[1] = 0;
+          anodeStates[2] = 1; break;
+        case 9:
+          anodeStates[2] = 0;
+          anodeStates[3] = 1; break;
+        case 10:
+          anodeStates[3] = 0;
+          sendTime(hrs,mins); break;
+        case 11:
+          anodeStates[0] = 1; break;
+        case 12:
+          anodeStates[0] = 0;
+          anodeStates[1] = 1; break;
+        case 13:
+          anodeStates[1] = 0;
+          anodeStates[2] = 1; break;
+        case 14:
+          anodeStates[2] = 0;
+          anodeStates[3] = 1; break;
+        case 15:
+          anodeStates[0] = 1; break;
+        case 16:
+          anodeStates[0] = 0;
+          anodeStates[1] = 1; break;
+        case 17:
+          anodeStates[1] = 0;
+          anodeStates[2] = 1; break;
+        case 18:
+          anodeStates[0] = 1; break;
+        case 19:
+          anodeStates[0] = 0;
+          anodeStates[1] = 1; break;
+        case 20:
+          anodeStates[0] = 1; break;
+        case 21:
+          flipInit = false;
+          newTimeFlag = false;
+      }
+    }
+  }
 }
