@@ -58,7 +58,7 @@ void buttonsTick() {
   } else if (curMode == 0) {
     // переключение эффектов цифр
     if (btnR.isClick()) {
-      if (++FLIP_EFFECT >= 4) FLIP_EFFECT = 0;
+      if (++FLIP_EFFECT >= FLIP_EFFECT_NUM) FLIP_EFFECT = 0;
       EEPROM.put(0, FLIP_EFFECT);
       flipTimer.setInterval(FLIP_SPEED[FLIP_EFFECT]);
       for (byte i = 0; i < 4; i++) {
