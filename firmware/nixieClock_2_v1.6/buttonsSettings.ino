@@ -62,6 +62,7 @@ void buttonsTick() {
       EEPROM.put(0, FLIP_EFFECT);
       for (byte i = 0; i < 4; i++) {
         indiDimm[i] = indiMaxBright;
+        anodeState[i] = 1;
       }
     }
 
