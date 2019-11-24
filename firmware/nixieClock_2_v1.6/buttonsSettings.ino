@@ -71,6 +71,12 @@ void buttonsTick() {
       EEPROM.put(1, BACKL_MODE);
     }
 
+    // переключение мигания точки
+    if (btnR.isHolded()) {
+      if (++DOT_MODE >= 2) DOT_MODE = 0;
+      EEPROM.put(3, DOT_MODE);
+    }
+    
     // переключение глюков
     if (btnL.isHolded()) {
       GLITCH_ALLOWED = !GLITCH_ALLOWED;

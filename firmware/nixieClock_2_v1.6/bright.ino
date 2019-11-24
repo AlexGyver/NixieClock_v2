@@ -43,7 +43,9 @@ void dotBrightTick() {
         dotBrightCounter = 0;
       }
     }
-    if (dotBrightCounter > 0) {
+    if (DOT_MODE == 0) {
+      setPWM(DOT, dotBrightCounter);
+    } else if (DOT_MODE == 1 && dotBrightCounter > 0) {
       setPWM(DOT, getPWM_CRT(dotBrightCounter));
     }
   }

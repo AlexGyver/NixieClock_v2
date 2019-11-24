@@ -1,5 +1,5 @@
 void setup() {
-  //Serial.begin(9600);
+//  Serial.begin(9600);
   // случайное зерно для генератора случайных чисел
   randomSeed(analogRead(6) + analogRead(7));
 
@@ -44,10 +44,12 @@ void setup() {
     EEPROM.put(0, FLIP_EFFECT);
     EEPROM.put(1, BACKL_MODE);
     EEPROM.put(2, GLITCH_ALLOWED);
+    EEPROM.put(3, DOT_MODE);
   }
   EEPROM.get(0, FLIP_EFFECT);
   EEPROM.get(1, BACKL_MODE);
   EEPROM.get(2, GLITCH_ALLOWED);
+  EEPROM.get(3, DOT_MODE);
 
   /*if (EEPROM.read(100) != 66) {   // проверка на первый запуск. 66 от балды
     EEPROM.write(100, 66);

@@ -51,6 +51,7 @@ boolean currentDigit = false;
 int8_t changeHrs, changeMins;
 boolean lampState = false;
 boolean anodeStates[] = {1, 1, 1, 1};
+boolean started = false;
 
 const uint8_t CRTgamma[256] PROGMEM = {
   0,    0,    1,    1,    1,    1,    1,    1,
