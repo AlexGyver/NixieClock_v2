@@ -84,7 +84,7 @@ byte BACKL_MODE = 0;
 #define DOT_BRIGHT 10       // яркость точки дневная (0 - 255)
 #define DOT_BRIGHT_N 3      // яркость точки ночная (0 - 255)
 
-#define BACKL_BRIGHT 180    // яркость подсветки ламп дневная (0 - 255)
+#define BACKL_BRIGHT 160    // яркость подсветки ламп дневная (0 - 255)
 #define BACKL_BRIGHT_N 20   // яркость подсветки ламп ночная (0 - 255)
 #define BACKL_PAUSE 600     // пазуа "темноты" между вспышками подсветки, мс
 

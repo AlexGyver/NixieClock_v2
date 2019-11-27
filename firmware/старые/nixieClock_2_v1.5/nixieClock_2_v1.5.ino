@@ -147,7 +147,7 @@ byte cathodeMask[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}; // и свой порядо
 
 // библиотеки
 #include <GyverHacks.h>
-#include <GyverTimer.h>
+#include "timer2Minim.h"
 #include <GyverButton.h>
 #include <Wire.h>
 #include <RTClib.h>
@@ -155,13 +155,13 @@ byte cathodeMask[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}; // и свой порядо
 RTC_DS3231 rtc;
 
 // таймеры
-GTimer_ms dotTimer(500);                // полсекундный таймер для часов
-GTimer_ms dotBrightTimer(DOT_TIMER);    // таймер шага яркости точки
-GTimer_ms backlBrightTimer(30);         // таймер шага яркости подсветки
-GTimer_ms almTimer((long)ALM_TIMEOUT * 1000);
-GTimer_ms flipTimer(FLIP_SPEED_1);
-GTimer_ms glitchTimer(1000);
-GTimer_ms blinkTimer(500);
+timerMinim dotTimer(500);                // полсекундный таймер для часов
+timerMinim dotBrightTimer(DOT_TIMER);    // таймер шага яркости точки
+timerMinim backlBrightTimer(30);         // таймер шага яркости подсветки
+timerMinim almTimer((long)ALM_TIMEOUT * 1000);
+timerMinim flipTimer(FLIP_SPEED_1);
+timerMinim glitchTimer(1000);
+timerMinim blinkTimer(500);
 
 // кнопки
 GButton btnSet(BTN1, HIGH_PULL, NORM_OPEN);

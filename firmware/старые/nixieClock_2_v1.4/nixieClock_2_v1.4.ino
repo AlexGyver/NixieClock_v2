@@ -33,7 +33,7 @@
 */
 
 // ************************** НАСТРОЙКИ **************************
-#define BOARD_TYPE 0
+#define BOARD_TYPE 2
 // тип платы часов:
 // 0 - IN-12 turned (индикаторы стоят правильно)
 // 1 - IN-12 (индикаторы перевёрнуты)
@@ -134,21 +134,22 @@ byte cathodeMask[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}; // и свой порядо
 
 // библиотеки
 #include <GyverHacks.h>
-#include <GyverTimer.h>
+//#include <GyverTimer.h>
 #include <GyverButton.h>
 #include <Wire.h>
 #include <RTClib.h>
+#include "timer2Minim.h"
 
 RTC_DS3231 rtc;
 
 // таймеры
-GTimer_ms dotTimer(500);                // полсекундный таймер для часов
-GTimer_ms dotBrightTimer(DOT_TIMER);    // таймер шага яркости точки
-GTimer_ms backlBrightTimer(30);         // таймер шага яркости подсветки
-GTimer_ms almTimer((long)ALM_TIMEOUT * 1000);
-GTimer_ms flipTimer(FLIP_SPEED);
-GTimer_ms glitchTimer(1000);
-GTimer_ms blinkTimer(500);
+timerMinim dotTimer(500);                // полсекундный таймер для часов
+timerMinim dotBrightTimer(DOT_TIMER);    // таймер шага яркости точки
+timerMinim backlBrightTimer(30);         // таймер шага яркости подсветки
+timerMinim almTimer((long)ALM_TIMEOUT * 1000);
+timerMinim flipTimer(FLIP_SPEED);
+timerMinim glitchTimer(1000);
+timerMinim blinkTimer(500);
 
 // кнопки
 GButton btnSet(BTN1, HIGH_PULL, NORM_OPEN);
@@ -252,7 +253,7 @@ void setup() {
 
   backlBrightTimer.setInterval((float)BACKL_STEP / backlMaxBright / 2 * BACKL_TIME);
 
-  almTimer.stop();
+  //almTimer.stop();
   glitchTimer.setInterval(random(GLITCH_MIN * 1000L, GLITCH_MAX * 1000L));
   indiBrightCounter = indiMaxBright;
 }
