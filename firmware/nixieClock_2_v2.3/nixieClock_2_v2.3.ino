@@ -81,8 +81,8 @@ byte BACKL_MODE = 0;
 #define NIGHT_START 23      // час перехода на ночную подсветку (BRIGHT_N)
 #define NIGHT_END 7         // час перехода на дневную подсветку (BRIGHT)
 
-#define INDI_BRIGHT 23      // яркость цифр дневная (0 - 24) !на 24 могут быть фантомные цифры!
-#define INDI_BRIGHT_N 3     // яркость ночная (0 - 24)
+#define INDI_BRIGHT 23      // яркость цифр дневная (1 - 24) !на 24 могут быть фантомные цифры!
+#define INDI_BRIGHT_N 3     // яркость ночная (1 - 24)
 
 #define DOT_BRIGHT 35       // яркость точки дневная (0 - 255)
 #define DOT_BRIGHT_N 15     // яркость точки ночная (0 - 255)

@@ -16,12 +16,12 @@ class timerMinim
 };
 
 timerMinim::timerMinim(uint32_t interval) {
-  _interval = (interval != 0) interval : 5;
+  _interval = (interval != 0) ? interval : 5;
   _timer = millis();
 }
 
 void timerMinim::setInterval(uint32_t interval) {
-  _interval = (interval != 0) interval : 5;
+  _interval = (interval != 0) ? interval : 5;
   _interval = interval;
 }
 
