@@ -69,7 +69,8 @@ void setup() {
   if (dotBrightStep == 0) dotBrightStep = 1;
 
   // дыхание подсветки
-  backlBrightTimer.setInterval((float)BACKL_STEP / backlMaxBright / 2 * BACKL_TIME);
+  if (backlMaxBright > 0)
+    backlBrightTimer.setInterval((float)BACKL_STEP / backlMaxBright / 2 * BACKL_TIME);
 
   // стартовый период глюков
   glitchTimer.setInterval(random(GLITCH_MIN * 1000L, GLITCH_MAX * 1000L));

@@ -67,7 +67,8 @@ void changeBright() {
   dotBrightStep = ceil((float)dotMaxBright * 2 / DOT_TIME * DOT_TIMER);
   if (dotBrightStep == 0) dotBrightStep = 1;
 
-  backlBrightTimer.setInterval((float)BACKL_STEP / backlMaxBright / 2 * BACKL_TIME);
+  if (backlMaxBright > 0)
+    backlBrightTimer.setInterval((float)BACKL_STEP / backlMaxBright / 2 * BACKL_TIME);
   indiBrightCounter = indiMaxBright;
 
   //change PWM to apply backlMaxBright in case of maximum bright mode
