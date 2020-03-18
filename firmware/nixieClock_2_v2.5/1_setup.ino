@@ -39,7 +39,7 @@ void setup() {
   hrs = now.hour();
 
   // EEPROM
-  if (EEPROM.read(1023) != 101) {   // первый запуск
+  if (EEPROM.read(1023) != 100) {   // первый запуск
     EEPROM.put(1023, 100);
     EEPROM.put(0, FLIP_EFFECT);
     EEPROM.put(1, BACKL_MODE);
