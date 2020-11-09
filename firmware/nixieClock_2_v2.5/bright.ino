@@ -32,13 +32,12 @@ void dotBrightTick() {
     if (dotBrightDirection) {
       dotBrightCounter += dotBrightStep;
       if (dotBrightCounter >= dotMaxBright) {
-        dotBrightDirection = false;
+        dotBrightFlag = false;
         dotBrightCounter = dotMaxBright;
       }
     } else {
       dotBrightCounter -= dotBrightStep;
       if (dotBrightCounter <= 0) {
-        dotBrightDirection = true;
         dotBrightFlag = false;
         dotBrightCounter = 0;
       }
