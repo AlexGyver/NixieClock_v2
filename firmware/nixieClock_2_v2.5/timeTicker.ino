@@ -3,8 +3,7 @@ void calculateTime() {
   dotFlag = !dotFlag;
   if (dotFlag)  {
     dotBrightFlag = true;
-    dotBrightDirection = true;
-    dotBrightCounter = 0;
+    dotBrightDirection = !dotBrightDirection;
     secs++;       
     if (secs > 59) 
     {
