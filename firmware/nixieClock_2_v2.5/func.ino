@@ -11,3 +11,8 @@ void burnIndicators() {
     }
   }
 }
+
+
+void playMelody() {
+  
+}

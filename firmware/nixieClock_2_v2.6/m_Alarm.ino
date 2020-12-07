@@ -15,20 +15,20 @@ void Alarm(){
               anodeStates[1] = 0;
               anodeStates[2] = 0;
               anodeStates[3] = 0;
-              setPin(PIEZO, 0);
+              beep(0);
             } else {
                 anodeStates[0] = 1;
                 anodeStates[1] = 1;
                 anodeStates[2] = 1;
                 anodeStates[3] = 1;  
-               setPin(PIEZO, 1);
+               beep(1);
             }
            } 
             if (almTimer.isReady()) //Выключить Будильник 
           {
             alm_flag = 0;
             almTimer.stop();            
-            setPin(PIEZO, 0);
+            beep(0);
             lampState = 1;
             anodeStates[0] = 1;
             anodeStates[1] = 1;

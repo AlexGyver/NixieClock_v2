@@ -24,7 +24,7 @@ void setup() {
   setPWM(9, DUTY);
 
   // перенастраиваем частоту ШИМ на пинах 3 и 11 на 7.8 кГц и разрешаем прерывания COMPA
-  TCCR2B = (TCCR2B & B11111000) | 2;    // делитель 8
+  TCCR2B = (TCCR2B & B11111000) | 1;    // делитель 8
   TCCR2A |= (1 << WGM21);   // включить CTC режим для COMPA
   TIMSK2 |= (1 << OCIE2A);  // включить прерывания по совпадению COMPA
 
@@ -83,5 +83,4 @@ void setup() {
 
   // скорость режима при запуске
   flipTimer.setInterval(FLIP_SPEED[FLIP_EFFECT]);
-  
 }

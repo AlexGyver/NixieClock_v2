@@ -146,19 +146,19 @@ void buttonsTick()
       EEPROM.put(2, GLITCH_ALLOWED);
         if(GLITCH_ALLOWED)
         {
-          setPin(PIEZO, 1);
+          beep(1);
           delay(10);
-          setPin(PIEZO, 0);
+          beep(0);
           delay(20);
-          setPin(PIEZO, 1);
+          beep(1);
           delay(10);
-          setPin(PIEZO, 0);
+          beep(0);
         }
         else
         {
-          setPin(PIEZO, 1);
+          beep(1);
           delay(20);
-          setPin(PIEZO, 0);
+          beep(0);
         }
     }
 }
@@ -182,6 +182,7 @@ void buttonsTick()
         EEPROM.put(4, alm_hrs);     // часы будильника
         EEPROM.put(5, alm_mins);     // минуты будильника
         rtc.adjust(DateTime(2019, 12, 05, hrs, mins, 0));
+        newTimeFlag=1;
         changeBright();
         break;        
         case 1:
@@ -202,27 +203,27 @@ void buttonsTick()
       EEPROM.put(3, ALARM_POWER);
       if(ALARM_POWER)  
       {        
-        setPin(PIEZO, 1);
+        beep(1);
         sendTime(alm_hrs, alm_mins); 
         delay(200);          
-        setPin(PIEZO, 0); 
+        beep(0); 
         delay(100);
-        setPin(PIEZO, 1);       
+        beep(1);       
         delay(200);          
-        setPin(PIEZO, 0);   
+        beep(0);   
         newTimeFlag=1;               
       } 
       else
       {
-        setPin(PIEZO, 1);        
+        beep(1);        
         delay(500);          
-        setPin(PIEZO, 0);           
+        beep(0);           
       }
     }  
     if(curMode == 0 && alm_flag)
     {
        alm_flag=0;
-       setPin(PIEZO, 0);
+       beep(0);
        lampState = 1;
        anodeStates[0] = 1;
        anodeStates[1] = 1;

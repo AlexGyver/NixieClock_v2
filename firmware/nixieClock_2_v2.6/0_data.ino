@@ -11,6 +11,7 @@ timerMinim dotTimer(500);                // полсекундный тайме�
 timerMinim dotBrightTimer(DOT_TIMER);    // таймер шага яркости точки
 timerMinim backlBrightTimer(30);         // таймер шага яркости подсветки//?
 timerMinim almTimer(ALM_TIMEOUT * 1000);  // таймер времени писка будильника
+//timerMinim almTimer(600000);  // таймер времени писка будильника
 timerMinim flipTimer(FLIP_SPEED[FLIP_EFFECT]);
 timerMinim glitchTimer(1000);
 timerMinim blinkTimer(500);
@@ -27,6 +28,7 @@ volatile int8_t indiDigits[4];    // цифры, которые должны п�
 volatile int8_t curIndi;          // текущий индикатор (0-3)
 boolean ALARM_POWER;              // 1 - включить, 0 -выключить будильник. Кнопка 1
 
+volatile boolean isBeeping = false;
 
 boolean alm_flag;
 boolean dotFlag;
@@ -155,4 +157,12 @@ void setPWM(uint8_t pin, uint16_t duty) {
         break;
     }
   }
+}
+
+void beep(boolean on) {
+  #if (BEEPER_TYPE == 0)
+  isBeeping = on;
+  #elif (BEEPER_TYPE == 1)
+  setPin(PIEZO, on);
+  #endif
 }
