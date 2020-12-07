@@ -182,7 +182,7 @@ void flipTick() {
         case 10:
           anodeStates[3] = 0;
           //sendTime(hrs,mins);
-		  break;
+      break;
         case 11:
           indiDigits[0] = newTime[3];
           anodeStates[0] = 1; break;

@@ -31,7 +31,7 @@ void setup() {
   // ---------- RTC -----------
   rtc.begin();
   if (rtc.lostPower()) {
-    rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
+  rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
   }
   DateTime now = rtc.now();
   secs = now.second();
@@ -39,23 +39,28 @@ void setup() {
   hrs = now.hour();
 
   // EEPROM
-  if (EEPROM.read(1023) != 100) {   // первый запуск
-    EEPROM.put(1023, 100);
-    EEPROM.put(0, FLIP_EFFECT);
+  if (EEPROM.read(1023) != 0) // первый запуск и установка переменных
+  {   
+    EEPROM.put(1023, 0);
+    EEPROM.put(10, FLIP_EFFECT);
     EEPROM.put(1, BACKL_MODE);
     EEPROM.put(2, GLITCH_ALLOWED);
+    EEPROM.put(3, ALARM_POWER);
   }
-  EEPROM.get(0, FLIP_EFFECT);
+  EEPROM.get(10, FLIP_EFFECT);
   EEPROM.get(1, BACKL_MODE);
   EEPROM.get(2, GLITCH_ALLOWED);
+  EEPROM.get(3, ALARM_POWER);
 
-  /*if (EEPROM.read(100) != 66) {   // проверка на первый запуск. 66 от балды
-    EEPROM.write(100, 66);
-    EEPROM.write(0, 0);     // часы будильника
-    EEPROM.write(1, 0);     // минуты будильника
-    }
-    alm_hrs = EEPROM.read(0);
-    alm_mins = EEPROM.read(1);*/
+
+   if (EEPROM.read(1022) != 0) // первый запуск и установка начального времени срабатывания будильника
+   {   
+     EEPROM.put(1022, 0);
+     EEPROM.put(4, alm_hrs);     // часы будильника
+     EEPROM.put(5, alm_mins);    //минуты будильника
+   }
+   EEPROM.get(4, alm_hrs);  //Читаем часы будильника из памяти
+   EEPROM.get(5, alm_mins);  //Читаем минуты будильника из памяти
 
   sendTime(hrs, mins);  // отправить время на индикаторы
   changeBright();       // изменить яркость согласно времени суток
@@ -78,5 +83,5 @@ void setup() {
 
   // скорость режима при запуске
   flipTimer.setInterval(FLIP_SPEED[FLIP_EFFECT]);
-  //almTimer.stop();
+  
 }

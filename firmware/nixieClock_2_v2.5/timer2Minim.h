@@ -8,8 +8,10 @@ class timerMinim
     timerMinim(uint32_t interval);				// объявление таймера с указанием интервала
     void setInterval(uint32_t interval);	// установка интервала работы таймера
     boolean isReady();						// возвращает true, когда пришло время. Сбрасывается в false сам (AUTO) или вручную (MANUAL)
-    void reset();							// ручной сброс таймера на установленный интервал
-
+    boolean _state = true;
+    void reset();	            // ручной сброс таймера на установленный интервал
+    void stop();              
+    void start();
   private:
     uint32_t _timer = 0;
     uint32_t _interval = 0;
@@ -36,6 +38,14 @@ boolean timerMinim::isReady() {
   } else {
     return false;
   }
+}
+void timerMinim::stop() 
+{
+  _state = false;
+}
+void timerMinim::start() 
+{
+  _state = true;
 }
 
 void timerMinim::reset() {
