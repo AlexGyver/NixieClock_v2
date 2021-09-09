@@ -72,9 +72,9 @@
 <a id="chapter-3"></a>
 ## Материалы и компоненты
 ### Ссылки оставлены на магазины, с которых я закупаюсь уже не один год
-- Arduino NANO Rev3.0 http://ali.ski/GVQzs  http://ali.ski/3SJf_
-- RTC DS3231 http://ali.ski/2iTBXy
-- Пищалка http://ali.ski/KnkfAa
+- Arduino NANO Rev3.0 https://ali.ski/670JrC  https://ali.ski/_7IUJ
+- RTC DS3231 https://ali.ski/gOYYG0
+- Пищалка https://ali.ski/8LEYlE
 - Гнёзда на плату https://www.chipdip.ru/product/pbs-40
 - Рейка штыревая https://www.chipdip.ru/product/pls-40
 - Конденсатор электролитический 4,7 мкФ 350V	https://www.chipdip.ru/product0/33635
