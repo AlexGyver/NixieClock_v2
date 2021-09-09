@@ -70,31 +70,6 @@
 ![SCHEME](https://github.com/AlexGyver/NixieClock_v2/blob/master/schemes/drawing.jpg)
 
 <a id="chapter-3"></a>
-## Материалы и компоненты
-### Ссылки оставлены на магазины, с которых я закупаюсь уже не один год
-- Arduino NANO Rev3.0 http://ali.ski/GVQzs  http://ali.ski/3SJf_
-- RTC DS3231 http://ali.ski/2iTBXy
-- Пищалка http://ali.ski/KnkfAa
-- Гнёзда на плату https://www.chipdip.ru/product/pbs-40
-- Рейка штыревая https://www.chipdip.ru/product/pls-40
-- Конденсатор электролитический 4,7 мкФ 350V	https://www.chipdip.ru/product0/33635
-- Резистор подстроечный 470 кОм (можно 500 кОм)	https://www.chipdip.ru/product/3362p-1-504
-- Индуктивность 220 мкГн (uH)	https://www.chipdip.ru/product/ec24-221k
-- Диод HER106	https://www.chipdip.ru/product/her106
-- Транзистор IRF840PBF	https://www.chipdip.ru/product/irf840
-- Оптопара TLP627(F) DIP-4	https://www.chipdip.ru/product/tlp627
-- Дешифратор К155ИД1	https://www.chipdip.ru/product/k155id1
-- Резисторы 0,25 Вт для версии ИН12/ИН14 со светодиодной точкой
-	- 150 Ом
-	- 470 Ом
-	- 10 кОм	
-	- 100 Ом - 3шт	
-- Резисторы 0,25 Вт для версии ИН14 с неоновой точкой
-	- 200 кОм
-	- 470 Ом
-	- 10 кОм	
-	- 100 Ом - 3шт
-
 ## Вам скорее всего пригодится
 * [Всё для пайки (паяльники и примочки)](http://alexgyver.ru/all-for-soldering/)
 * [Недорогие инструменты](http://alexgyver.ru/my_instruments/)
