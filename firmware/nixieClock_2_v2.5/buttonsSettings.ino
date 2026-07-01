@@ -96,13 +96,15 @@ void buttonsTick() {
     currentDigit = false;
     if (++curMode >= 2) curMode = 0;
     switch (curMode) {
-      case 0:
+      case 0: {
         hrs = changeHrs;
         mins = changeMins;
         secs = 0;
-        rtc.adjust(DateTime(2019, 12, 05, hrs, mins, 0));
+        DateTime nowDate = rtc.now();  // сохраняем текущую дату, меняем только время
+        rtc.adjust(DateTime(nowDate.year(), nowDate.month(), nowDate.day(), hrs, mins, 0));
         changeBright();
         break;
+      }
       case 1:
         changeHrs = hrs;
         changeMins = mins;
