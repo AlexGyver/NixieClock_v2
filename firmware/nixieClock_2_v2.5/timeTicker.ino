@@ -18,6 +18,7 @@ void calculateTime() {
         secs = now.second();
         mins = now.minute();
         hrs = now.hour();
+        changeBright();                 // час мог смениться ресинком — обновить день/ночь яркость
       }
 
       if (mins % BURN_PERIOD == 0) burnIndicators();     // чистим чистим!

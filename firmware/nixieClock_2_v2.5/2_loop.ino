@@ -3,7 +3,7 @@ void loop() {
   if (newTimeFlag && curMode == 0) flipTick();    // перелистывание цифр
   dotBrightTick();                                // плавное мигание точки
   backlBrightTick();                              // плавное мигание подсветки ламп
-  if (GLITCH_ALLOWED && mode == 0) glitchTick();  // глюки
+  if (GLITCH_ALLOWED && curMode == 0) glitchTick();  // глюки (только в режиме часов, не в настройке)
   buttonsTick();                                  // кнопки
   settingsTick();                                 // настройки
 }

@@ -48,8 +48,7 @@ void flipTick() {
       byte flipCounter = 0;
       for (byte i = 0; i < 4; i++) {
         if (flipIndics[i]) {
-          indiDigits[i]--;
-          if (indiDigits[i] < 0) indiDigits[i] = 9;
+          indiDigits[i] = indiDigits[i] ? indiDigits[i] - 1 : 9;  // одной записью, без промежуточного -1 (гонка с ISR)
           if (indiDigits[i] == newTime[i]) flipIndics[i] = false;
         } else {
           flipCounter++;        // счётчик цифр, которые не надо менять
